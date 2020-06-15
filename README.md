@@ -1,2 +1,0 @@
-# D
-Repositorio de pruebas
