@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="15">
+    <title>SERVIDOR PHP</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+    <style>
+        body{
+            background-color: lightgray;
+        }
+
+        .frame{
+            margin: 15px 0;
+        }
+
+        h1 {
+            background-color: aquamarine;
+            font-weight:bold;
+        }
+    </style>
+<body class="container-fluid">
+    <div class="row">
+        <h1 class="text-center">Servidor PHP para ESP8266</h1>
+        <div class="frame">
+            <!-- Display Temperatura -->
+            <div class="col-sm-6">
+                <h2 class="text-center">Temperatura en °C</h2>
+                <div id="displayTemperatura"></div>
+            </div>
+            <!-- Display Humedad -->
+            <div class="col-sm-6">
+                <h2 class="text-center">Humedad en %</h2>
+                <div id="displayHumedad"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="js/sevenSeg.js"></script>
+
+    <script>
+        let tempVal = <?php echo $var1; ?>;
+        let humVal = <?php echo $var2; ?>;
+
+        $("#displayTemperatura").sevenSeg({ digits: 5, value: tempVal + 0.01});
+        $("#displayHumedad").sevenSeg({
+            digits: 5,
+            value: humVal + 0.01,
+            colorOff: "#003200",
+            colorOn: "lime",
+            slant:0
+        });
+    </script>
+</body>
+</html>
